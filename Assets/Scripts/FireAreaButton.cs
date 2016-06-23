@@ -14,18 +14,18 @@ public class FireAreaButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 	}
 
 	public void OnPointerDown (PointerEventData data) {
-		//if (!touched) {
+		if (!touched) {
 			touched = true;
 			pointerID = data.pointerId;
 			canFire = true;
-		//}
+		}
 	}
 
 	public void OnPointerUp (PointerEventData data) {
-		//if (data.pointerId == pointerID) {
+		if (data.pointerId == pointerID) {
 			touched = false;
 			canFire = false;
-		//}
+		}
 	}
 
 	public bool CanFire () {

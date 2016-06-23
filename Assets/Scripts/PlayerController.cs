@@ -26,12 +26,17 @@ public class PlayerController : MonoBehaviour {
 
 	void Update ()
 	{
-		if (fireButton.CanFire() || Input.GetButton("Fire1") && Time.time > nextFire) 
-		{
-			nextFire = Time.time + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-			GetComponent<AudioSource>().Play ();
+		if (fireButton.CanFire () && Time.time > nextFire) {
+			FireShot ();
+		} else if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+			FireShot ();
 		}
+	}
+
+	void FireShot () {
+		nextFire = Time.time + fireRate;
+		Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+		GetComponent<AudioSource> ().Play ();
 	}
 
 	void FixedUpdate ()
